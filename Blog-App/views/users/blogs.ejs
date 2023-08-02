@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <%- include("../partials/nav") %>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group">
+            <% for( let index = 0; index < categories.length; index++ ) { %>
+            <a href="" class="list-group-item list-group-item-action"
+              ><%= categories[index] %></a
+            >
+            <% } %>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h1 class="h3 mb-3"><%=title%></h1>
+
+          <% blogs.forEach(blog => { %> <% if (blog.approved) { %> <%-
+          include("../partials/blog-card",blog) %> <% } %> <% }) %> <% if
+          (blogs.filter(b=>b.approved).length>3) { %>
+
+          <!-- Pagination -->
+          <%- include('../partials/pagination') %> <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
