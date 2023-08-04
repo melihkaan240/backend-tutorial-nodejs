@@ -1,9 +1,7 @@
 <div class="list-group">
   <a href="" class="list-group-item list-group-item-action">Tüm Kategoriler</a>
 
-  <% for( let index = 0; index < categories.length; index++ ) { %>
-  <a href="" class="list-group-item list-group-item-action"
-    ><%= categories[index] %></a
-  >
-  <% } %>
+  <% categories.forEach(e => { %>
+  <a href="" class="list-group-item list-group-item-action"><%= e.name %></a>
+  <% }) %>
 </div>
