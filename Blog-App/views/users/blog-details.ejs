@@ -1,95 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("../partials/head") %>
-  </head>
-  <body>
-    <style>
-      /* Global Reset */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
 
-      /* Navbar Styles */
-      .navbar {
-        background-color: #007bff;
-        display: flex;
-
-        justify-content: center;
-      }
-
-      .container {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        justify-content: start;
-        padding: 1rem;
-        max-width: 1200px;
-        width: 100%;
-      }
-
-      .navbar-brand {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.5rem;
-      }
-
-      .navbar-nav {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .nav-item {
-        margin-right: 1rem;
-      }
-
-      .nav-link {
-        color: #fff;
-        text-decoration: none;
-      }
-    </style>
-    <nav class="navbar">
-      <div class="container">
-        <a href="/" class="navbar-brand">Blogapp</a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="/blogs" class="nav-link">Blog Listesi</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div style="margin-top: 30px" class="container mt-3">
-      <div class="card-body">
+    <div class="container mt-3">
         <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div
-                style="
-                  position: relative;
-                  width: 100%;
-                  padding-right: 15px;
-                  padding-left: 15px;
-                "
-              >
-                <img
-                  src="/static/images/<%=blog.image  %>"
-                  class="img-fluid"
-                  alt=""
-                />
-              </div>
-              <div class="col-md-8">
-                <h1 class="h3 mb-3"><%= blog.title %></h1>
-                <p><%= blog.description %></p>
-              </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="/static/images/<%=blog.resim  %>" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <h1 class="h3 mb-3"> <%= blog.baslik %> </h1>
+                        <p><%= blog.aciklama %> </p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </div>        
     </div>
-  </body>
+</body>
 </html>
+
+
+
