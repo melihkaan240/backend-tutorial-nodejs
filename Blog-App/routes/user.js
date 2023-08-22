@@ -5,6 +5,7 @@ const db = require("../data/db");
 
 router.use("/blogs/category/:categoryid", async function(req, res) {
     const id = req.params.categoryid;
+    console.log("this is id:",id);
     try {
         const [blogs, ] = await db.execute("select * from blog where categoryid=?", [id]); 
         const [categories, ] = await db.execute("select * from category");
@@ -67,7 +68,8 @@ router.use("/", async function(req, res) {
         res.render("users/index", {
             title: "Popüler Kurslar",
             blogs: blogs,
-            categories: categories
+            categories: categories,
+            selectedCategory: null
         })
     }
     catch(err) {
