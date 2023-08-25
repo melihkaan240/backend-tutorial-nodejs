@@ -74,16 +74,19 @@ router.get("/blog/create", async function(req, res) {
     }
 });
 
-router.post("/blog/create", async function(req, res) {
+const multer =require("multer")
+const upload =multer({dest:"./public/images"})
+
+router.post("/blog/create",upload.single("resim") ,async function(req, res) {
     const baslik = req.body.baslik;
     const aciklama = req.body.aciklama;
-    const resim = req.body.resim;
+    const resim = req.file.filename;
     const anasayfa = req.body.anasayfa == "on" ? 1:0;
     const onay = req.body.onay == "on"? 1:0;
     const kategori = req.body.kategori;
 
     try {
-        await db.execute("INSERT INTO blog(baslik, aciklama, resim, anasayfa, onay, categoryid) VALUES (?,?,?,?,?,?)", [baslik, aciklama, resim, anasayfa, onay, kategori]);
+      await db.execute("INSERT INTO blog(baslik, aciklama, resim, anasayfa, onay, categoryid) VALUES (?,?,?,?,?,?)", [baslik, aciklama, resim, anasayfa, onay, kategori]);
         res.redirect("/admin/blogs?action=create");
     }
     catch(err) {
